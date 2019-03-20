@@ -10,16 +10,20 @@
 <body>
   <div class="adding-machine">
     <h1>Adding Machine</h1>
-    <div class="error__target-js"></div>
     <div class="controls">
-      <input class="controls__input-a-js" type="text"/>
-      <span>+</span>
-      <input class="controls__input-b-js" type="text"/>
-      <button class="controls__submit-js">=</button>
+      <div>
+        <input class="js-controls__input-a" type="text"/>
+        <button class="controls__button--plus" disabled>+</button>
+      </div>
+      <div>
+        <input class="js-controls__input-b" type="text"/>
+        <button class="js-controls__submit">=</button>
+      </div>
     </div>
     <div class="result">
-      <p>Result: <span class="result__target-js"></span></p>
+      <p>Result: <span class="js-result"></span></p>
     </div>
+    <div class="js-error error hidden"></div>
   </div>
   <script src="src/app/app.js"></script>
 </body>

@@ -4,6 +4,31 @@
   flex-direction: column;
 }
 
-.hidden {
+.error.hidden {
   visibility: hidden;
+}
+
+.error {
+  padding: 10px;
+  min-height: 50px;
+  min-width: 250px;
+  text-align: center;
+  outline: 1px solid black;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error p {
+  margin: 0;
+}
+
+.controls div {
+  margin: 10px 0;
+}
+
+.controls__button--plus {
+  border: none;
+  background: none;
 }
