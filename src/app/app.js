@@ -1,20 +1,18 @@
-const resultTarget = document.querySelector('.js-result');
-const errorTarget = document.querySelector('.js-error');
-const submit = document.querySelector('.js-controls__submit');
+import {validate} from './utils/validate-inputs.js';
+import {parse} from './utils/parse-inputs.js';
+import {calculate} from './utils/calculate.js'
 
-function process(...input) {
-  const errors = validate(input);
-  if (Object.keys(errors).length > 0) {
-    return displayErrors(errors);
-  };
-  // hideErrors
-  parsedInput = parse(input);
-  return add(parsedInput);
+main = (component, alert) => {  
+  function onClick() {
+    const input = component.getInput();
+    const errors = validate(input);
+    if (Object.keys(errors).length > 0) {
+      return alert.displayErrors(errors);
+    };
+    alert.hideErrors();
+    parsedInput = parse(input);
+    const result = calculate(parsedInput);
+    component.displayResult(result);
+  }
+  component.setSubmitBehavior(onClick);
 }
-
-submit.addEventListener('click', () => {
-  const a = document.querySelector('.js-controls__input-a').value;
-  const b = document.querySelector('.js-controls__input-b').value;
-  const result = process(a, b);
-  resultTarget.innerHTML = result || '';
-});
