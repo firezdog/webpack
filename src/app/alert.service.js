@@ -1,4 +1,4 @@
-export class AlertService {
+class AlertService {
 
   constructor() {
     this.errorTarget = document.querySelector('.js-error');

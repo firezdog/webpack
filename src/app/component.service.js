@@ -1,4 +1,4 @@
-export class ComponentService {
+class ComponentService {
   constructor() {
     this.inputA = document.querySelector('.js-controls__input-a');
     this.inputB = document.querySelector('.js-controls__input-b');

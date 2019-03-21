@@ -1,6 +1,5 @@
-import {validate} from './utils/validate-inputs.js';
-import {parse} from './utils/parse-inputs.js';
-import {calculate} from './utils/calculate.js'
+const component = new ComponentService();
+const alert = new AlertService();
 
 main = (component, alert) => {  
   function onClick() {
@@ -16,3 +15,5 @@ main = (component, alert) => {
   }
   component.setSubmitBehavior(onClick);
 }
+
+main(component, alert);

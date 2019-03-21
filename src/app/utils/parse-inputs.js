@@ -1,3 +1,3 @@
-export const parse = (input) => {
+const parse = (input) => {
   return input.map(item => parseFloat(item));
 };

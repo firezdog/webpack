@@ -9,3 +9,4 @@
 * Sample app -- a calculator with basic validations
 * ./assets, src/app.js, index.html 
 * getting a more complicated structure: break app (simple as it is) into utils
+* Why webpack?  Apparently import statements don't work in JS files linked from html!  We would have to manually link everything in the right order (or use dynamic imports, which is annoying). Webpack would make sure that client-side JS has all the dependencies it needs to run.
