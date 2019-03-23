@@ -5,25 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
-  <div class="adding-machine">
+  <div class="adding-machine mt-5 container jumbotron">
     <h1>Adding Machine</h1>
     <div class="controls">
       <div>
-        <input class="js-controls__input-a" type="text"/>
+        <input class="js-controls__input-a form-control" type="text"/>
         <button class="controls__button--plus" disabled>+</button>
       </div>
       <div>
-        <input class="js-controls__input-b" type="text"/>
-        <button class="js-controls__submit">=</button>
+        <input class="js-controls__input-b form-control" type="text"/>
+        <button class="js-controls__submit btn btn-primary">=</button>
       </div>
     </div>
     <div class="result">
       <p>Result: <span class="js-result"></span></p>
     </div>
-    <div class="js-error error hidden"></div>
+    <div class="js-error alert alert-danger error hidden"></div>
   </div>
   <script src="src/app/component.service.js"></script>
   <script src="src/app/alert.service.js"></script>
@@ -31,5 +32,6 @@
   <script src="src/app/utils/parse-inputs.js"></script>
   <script src="src/app/utils/calculate.js"></script>
   <script src="src/app/app.js"></script>
+  <script src="dist/main.js"></script>
 </body>
 </html>

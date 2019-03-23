@@ -32,3 +32,8 @@
   border: none;
   background: none;
 }
+
+.form-control {
+  display: inline-block;
+  width: auto;
+}
