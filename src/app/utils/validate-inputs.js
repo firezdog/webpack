@@ -1,4 +1,4 @@
-const validate = (input) => {
+export const validate = (input) => {
   const numberPattern = /^([0-9]+.)?[0-9]+$/;
   const errors = {};
   input.forEach(item => {

@@ -1,7 +1,8 @@
-const component = new ComponentService();
-const alert = new AlertService();
+import {validate} from './utils/validate-inputs';
+import {parse} from './utils/parse-inputs';
+import {calculate} from './utils/calculate';
 
-main = (component, alert) => {  
+export const main = (component, alert) => {  
   function onClick() {
     const input = component.getInput();
     const errors = validate(input);
@@ -9,11 +10,9 @@ main = (component, alert) => {
       return alert.displayErrors(errors);
     };
     alert.hideErrors();
-    parsedInput = parse(input);
+    const parsedInput = parse(input);
     const result = calculate(parsedInput);
     component.displayResult(result);
   }
   component.setSubmitBehavior(onClick);
 }
-
-main(component, alert);

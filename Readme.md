@@ -14,3 +14,5 @@
 * "start": webpack
 * need "index.js" in src on "npx webpack" -- creates a complicated "main.js" in ./dist
 * now we can have our html use the "main.js" -- goal is it won't need anything else and all imports will be there.
+## Part 3
+* We can now bundle all imports from index.js into our application
