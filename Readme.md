@@ -16,3 +16,4 @@
 * now we can have our html use the "main.js" -- goal is it won't need anything else and all imports will be there.
 ## Part 3
 * We can now bundle all imports from index.js into our application
+* we need to make sure that dependencies export what we need (and we use destructuring {} to get it).
