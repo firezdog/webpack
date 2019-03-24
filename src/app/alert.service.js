@@ -1,3 +1,5 @@
+import {validate} from './utils/validate-inputs';
+
 export class AlertService {
 
   constructor() {
@@ -15,6 +17,14 @@ export class AlertService {
 
   hideErrors() {
     this.errorTarget.classList.add('hidden');
+  }
+
+  check(input) {
+    const errors = validate(input);
+    if (Object.keys(errors).length > 0) {
+      return this.displayErrors(errors);
+    };
+    this.hideErrors();
   }
 
 }
