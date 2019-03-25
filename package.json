@@ -1,10 +1,10 @@
 {
-  "name": "Webpack",
+  "name": "webpack",
   "version": "1.0.0",
   "description": "* Bundle files from many different sources into a few files (bundle assets) / manage dependencies.\r * loaders\r * create-react-app and other cli's use webpack\r * minified files (bundle.js, main.chunk.js) \"eval\" \"__webpack__require__\" etc.\r * development and production modes\r ## Part 2\r * Sample app -- a calculator with basic validations\r * ./assets, src/app.js, index.html \r * getting a more complicated structure: break app (simple as it is) into utils\r * Why webpack?  Apparently import statements don't work in JS files linked from html!  We would have to manually link everything in the right order (or use dynamic imports, which is annoying). Webpack would make sure that client-side JS has all the dependencies it needs to run.",
   "main": "app.js",
   "scripts": {
-    "start": "webpack",
+    "start": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
