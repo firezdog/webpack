@@ -21,3 +21,8 @@
 We have been using default behavior -- to create a "main.js" bundle in "./dist" based on "./src/index.js".  We can also configure this behavior to suit our needs (webpack.config.js) using "(npx) webpack --config \<config file>".  
 
 If we set our "mode" to "development, we get more readable code -- comprehension is still difficult, however, because of "eval".  We can use "devtool: 'none'" to get rid of the "eval"s. Doing so, we see that webpack is wrapping our code in functions and replacing imports with the '\__webpack_require__' (or '\__webpack_exports__') function.
+## Part 5: Bundling Other Things (Loaders)
+* Loaders: allow wp to handle different files, dictate preprocessing e.g. css (sass)
+* src/main.css: how to include?
+* 'test' and 'use' under module.rules
+* style-loader and css-loader (npm install --save-dev) -- they both do work -- test for '.css' ending.
