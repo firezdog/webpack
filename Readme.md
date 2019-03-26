@@ -26,3 +26,5 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * src/main.css: how to include?
 * 'test' and 'use' under module.rules
 * style-loader and css-loader (npm install --save-dev) -- they both do work -- test for '.css' ending.
+* webpack is turning our css into javascript (with css-loader) and then injects it into the DOM (with style-loader)
+* laoders load in reverse order -- so we put our css-loader at the end of the array, then style-loader to inject it
