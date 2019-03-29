@@ -30,3 +30,13 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * laoders load in reverse order -- so we put our css-loader at the end of the array, then style-loader to inject it
 * adding sass: test for ".scss" and "npm install sass-loader node-sass webpack --save-dev"
 * overriding bootstrap: install bootstrap and import the bootstrap scss into main.scss. Then you can change variables e.g. $primary (note that the variable has to be defined before the import)
+## Part 6: Cache Busting
+* prevent browsers from caching 
+* What is caching?
+* Network tab informs us what files were loaded "from disk cache"
+* Problem: what if browser doesn't load our updates because the site is cached? 
+* use content hashes to change the filename (filename is determined by file contents)
+* used on github (github-xxx)
+* add [contentHash] to filename
+* problem: index.html uses "main.js" -- but output is "main-[contentHash].js" ??? -- solution: we no longer put the script into the html
+* solution: html plugin will inject dependencies into either a specified or made-to-order html file (note: plugins is not part of the module!)
