@@ -40,3 +40,14 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * add [contentHash] to filename
 * problem: index.html uses "main.js" -- but output is "main-[contentHash].js" ??? -- solution: we no longer put the script into the html
 * solution: html plugin will inject dependencies into either a specified or made-to-order html file (note: plugins is not part of the module!)
+## Part 7: Splitting Dev And Production
+* Split config file into 3 -- common, dev, and production, w/ webpack-dev-server for development,  minification for production
+* in dev, npm start will open a server and update automatically
+* npm run build will use production and minify into a "build" directory
+* webpack-dev-server provides a server as well as a "hot" option to automatically reload files on change (or you can use --hot)
+* webpack-dev-server --open --watch (for changes) --hot (for HMR)
+* guessing that common will be integrated with dev and prod using some kind of "merge" utility (lodash?)
+* use & to build and then run server
+* ran into "webpack-dev-server should not have additional options problem because I mis-spelled one of the properties in my config file (you can use --config and webpack-dev-server also compiles)
+* we can use clean-webpack-plugin to get rid of old files each time we build -- but prob better to just delete dist each time?
+* clean-webpack-plugin doesn't seem to delete files on rebuild (for hot dev server)
