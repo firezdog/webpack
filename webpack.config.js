@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
-const _ = require('lodash')
+const merge = require('webpack-merge')
 
 const TARGET = process.env.npm_lifecycle_event; // start, build
 
@@ -60,10 +60,10 @@ const development = {
 
 switch (TARGET) {
   case 'start':
-    module.exports = _.mergeWith(development, common);
+    module.exports = merge(development, common);
     break;
   case 'build':
-    module.exports = _.mergeWith(production, common);
+    module.exports = merge(production, common);
     break;
 }
 
