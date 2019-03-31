@@ -51,3 +51,4 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * ran into "webpack-dev-server should not have additional options problem because I mis-spelled one of the properties in my config file (you can use --config and webpack-dev-server also compiles)
 * we can use clean-webpack-plugin to get rid of old files each time we build -- but prob better to just delete dist each time?
 * clean-webpack-plugin doesn't seem to delete files on rebuild (for hot dev server)
+* we can use process.env.npm_lifecycle_event as a TARGET to have different builds in the same config file (this would be the script running, I believe as scripts_foo.js
