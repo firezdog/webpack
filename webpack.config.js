@@ -42,20 +42,7 @@ const production = {
 
 const development = {
   mode: 'development',
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 8001,
-    hot: true,
-    writeToDisk: true,
-  },
   plugins: [hotModuleReplacementPlugin],
-  output: {
-    // generate absolute path for compile target
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'main.js',
-  }
 };
 
 switch (TARGET) {
@@ -66,5 +53,3 @@ switch (TARGET) {
     module.exports = merge(production, common);
     break;
 }
-
-console.log(module.exports);
