@@ -17,10 +17,7 @@ const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
 const common = {
   // what is the main file (what do we need to compile)?
   entry: './src/index.js',
-  output: {
-    filename: 'main-[hash].js',
-  },
-  plugins: [cleanWebpackPlugin, htmlWebpackPlugin],
+  plugins: [htmlWebpackPlugin, cleanWebpackPlugin],
   module: {
     rules: [
       {
@@ -39,6 +36,7 @@ const production = {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'build'),
+    filename: 'main-[contentHash].js',
   },
 };
 
@@ -49,18 +47,24 @@ const development = {
     compress: true,
     port: 8001,
     hot: true,
+    writeToDisk: true,
   },
   plugins: [hotModuleReplacementPlugin],
   output: {
     // generate absolute path for compile target
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
+    filename: 'main.js',
   }
 };
 
 switch (TARGET) {
   case 'start':
-    module.exports = _.merge(common, development); 
+    module.exports = _.mergeWith(development, common);
+    break;
   case 'build':
-    module.exports = _.merge(common, production);
+    module.exports = _.mergeWith(production, common);
+    break;
 }
+
+console.log(module.exports);
