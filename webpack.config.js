@@ -18,6 +18,11 @@ const common = {
   // what is the main file (what do we need to compile)?
   entry: './src/index.js',
   plugins: [htmlWebpackPlugin, cleanWebpackPlugin],
+  resolve: {
+    alias: {
+      images: path.resolve(__dirname, 'src/images/'),
+    },
+  },
   module: {
     rules: [
       {
@@ -27,6 +32,20 @@ const common = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: "[name].[hash].[ext]",
+            outputPath: "images",
+          }
+        }
       },
     ],
   },

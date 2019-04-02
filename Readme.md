@@ -52,3 +52,11 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * we can use clean-webpack-plugin to get rid of old files each time we build -- but prob better to just delete dist each time?
 * clean-webpack-plugin doesn't seem to delete files on rebuild (for hot dev server)
 * we can use process.env.npm_lifecycle_event as a TARGET to have different builds in the same config file (this would be the script running, I believe as scripts_foo.js
+## Part 8: Html-loader and file-loader
+* moving the "cookies" image into assets -- now we need a loader to handle this dependency.
+* we will use file-loader
+* test: /\.(png|svg|jpg|gif)$/
+* we can configure the name and outputPath as "options" (but then we need an object under use that specifies the "loader")
+* we don't need a global "assets" folder now because webpack will make assets available as needed
+* to load images from html we need html-loader (try it -- without html loader img link is broken -- or rather, we don't have the correct reference to the file webpack brought over)
+* with aliasing (resolve: { alias: {} }): path.resolve(__dirname, 'src/images') -- now just use 'images/...' as the path
