@@ -15,8 +15,10 @@ const cleanWebpackPlugin = new CleanWebpackPlugin();
 const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin(); 
 
 const common = {
-  // what is the main file (what do we need to compile)?
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    vendor: './src/vendor.js',
+  },
   plugins: [htmlWebpackPlugin, cleanWebpackPlugin],
   resolve: {
     alias: {
@@ -55,13 +57,17 @@ const production = {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'main-[contentHash].js',
+    filename: '[name]-[contentHash].bundle.js',
   },
 };
 
 const development = {
   mode: 'development',
   plugins: [hotModuleReplacementPlugin],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]-[hash].bundle.js',
+  },
 };
 
 switch (TARGET) {

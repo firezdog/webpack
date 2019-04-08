@@ -60,3 +60,11 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * we don't need a global "assets" folder now because webpack will make assets available as needed
 * to load images from html we need html-loader (try it -- without html loader img link is broken -- or rather, we don't have the correct reference to the file webpack brought over)
 * with aliasing (resolve: { alias: {} }): path.resolve(__dirname, 'src/images') -- now just use 'images/...' as the path
+## Part 9: Multiple Bundles
+* separating out our code from static vendor code (e.g. bootstrap) e.g. vendor.content.js
+* step 1: put a new JS file in, then have webpack include it with another entrypoint.
+* webpack docs encourage use of optimization.splitChunks (for node_modules)
+* problem (from step 1) -- outputs all have same name (main)? -- solution: use [name] (we also use .bundle.js -- remember those first few months of work when you didn't understand where any of the JS came from?)
+* now we can import bootstrap in the vendor (and not in the scss? -- doesn't seem like that works)
+* now that we have bootstrap imported, we need to install its dependencies, jquery and popper.js (not popper!), or we get compile errors -- webpack just looks for the dependencies -- it doesn't install them!
+* next step -- extract and minify the css (that must be part of the reason why it matters where we import it? -- no -- just has to be imported correct with the .scss prefix)
