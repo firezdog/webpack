@@ -76,3 +76,4 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * we want to extract the css *instead* of using style-loader (style-loader is what is currently extracting from the JS) -- so all we need to do is *replace* style-loader with the css extractor
 * the above is not enough to minify -- we need to install something like optimize-css-assets-webpack-plugin, terserJSPlugin and set optimization.minimizer (an array) to contain instances of those plugins.
 * we need js minification because we overrode js minification when we included the optimize option
+* finally we can minify the html using the htmlwebpackplugin (add minify options)

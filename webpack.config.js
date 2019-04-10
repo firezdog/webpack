@@ -9,25 +9,36 @@ const merge = require('webpack-merge')
 
 const TARGET = process.env.npm_lifecycle_event; // start, build
 
-// common
+// development
 const htmlWebpackPlugin = 
   new HtmlWebpackPlugin({
     hash: true,
     filename: 'index.html',
     template: './src/index.html',
   });
+
 // prod
+const minifyHtmlWebpackPlugin = 
+  new HtmlWebpackPlugin({
+      hash: true,
+      filename: 'index.html',
+      template: './src/index.html',
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    })
 const miniCssExtractPlugin = 
   new MiniCssExtractPlugin({
       filename: "[name].[hash].css"
-    })
+  })
 
 const common = {
   entry: {
     main: './src/index.js',
     vendor: './src/vendor.js',
   },
-  plugins: [htmlWebpackPlugin],
   resolve: {
     alias: {
       images: path.resolve(__dirname, 'src/images/'),
@@ -57,11 +68,16 @@ const production = {
   optimization: {
     minimizer: [
       new TerserJSPlugin(),
-      new OptimizeCSSAssetsPlugin()
+      new OptimizeCSSAssetsPlugin(),
+      minifyHtmlWebpackPlugin
     ]
   },
   mode: 'production',
-  plugins: [new CleanWebpackPlugin(), miniCssExtractPlugin],
+  plugins: [
+    new CleanWebpackPlugin(), 
+    miniCssExtractPlugin, 
+    minifyHtmlWebpackPlugin
+  ],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name]-[contentHash].bundle.js',
@@ -78,7 +94,10 @@ const production = {
 
 const development = {
   mode: 'development',
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(), 
+    htmlWebpackPlugin
+  ],
   module: {
     rules: [
       {
