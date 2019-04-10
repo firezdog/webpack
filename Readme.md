@@ -60,3 +60,11 @@ If we set our "mode" to "development, we get more readable code -- comprehension
 * we don't need a global "assets" folder now because webpack will make assets available as needed
 * to load images from html we need html-loader (try it -- without html loader img link is broken -- or rather, we don't have the correct reference to the file webpack brought over)
 * with aliasing (resolve: { alias: {} }): path.resolve(__dirname, 'src/images') -- now just use 'images/...' as the path
+## Part 9: Extracting CSS, Minifying
+* MiniCssExtractPlugin (mini-css-extract-plugin)
+* use MiniCssExtractPlugin.loader as your css loader -- specify filename as "[name].css" when loading plugin
+* why? better performance (don't wait for JS to inject styles -- otherwise JS has to load first)
+* only put this in production so we don't wait for css files
+* we want to extract the css *instead* of using style-loader (style-loader is what is currently extracting from the JS) -- so all we need to do is *replace* style-loader with the css extractor
+* the above is not enough to minify -- we need to install something like optimize-css-assets-webpack-plugin, terserJSPlugin and set optimization.minimizer (an array) to contain instances of those plugins.
+* we need js minification because we overrode js minification when we included the optimize option
