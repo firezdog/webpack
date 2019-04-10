@@ -23,8 +23,10 @@ const miniCssExtractPlugin =
     })
 
 const common = {
-  // what is the main file (what do we need to compile)?
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    vendor: './src/vendor.js',
+  },
   plugins: [htmlWebpackPlugin],
   resolve: {
     alias: {
@@ -62,7 +64,7 @@ const production = {
   plugins: [new CleanWebpackPlugin(), miniCssExtractPlugin],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'main-[contentHash].js',
+    filename: '[name]-[contentHash].bundle.js',
   },
   module: {
     rules: [
